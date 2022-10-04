@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="fullscn(document.documentElement)"> go to fullscreen</button>
+    <h1 >confirm box</h1>
+    <button onclick="confirmation(5)">confirm for full screen</button>
+    <button onclick="blth()">blth</button>
+    <script>
+         let t= false
+        function confirmation(a){
+        let c=confirm("are you sure")//when u will press ok c will store true,if u press cancel it will store false
+        
+      if(c){
+        t=true
+        console.log("you pressed ok")
+      }
+      else{
+        console.log("you pressed cancel")
+      }
+
+        }
+    function fullscn(elm){
+       if(t){
+        elm.requestFullscreen()
+       }
+       
+      }
+      console.log(navigator.connection)//to know network
+      function blth(){
+    
+      navigator.bluetooth.requestDevice({
+        acceptAllDevices:true
+      }).then(device=>{
+        setDeviceName(device.name)
+        setDeviceId(device.id)
+        setDevicConnected(device.connected)
+      }).catch(err=>{
+        setError(true)
+      })
+    }
+    </script>
+</body>
+</html>
